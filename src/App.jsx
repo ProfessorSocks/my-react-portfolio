@@ -29,7 +29,26 @@ function App() {
     //     Click on the Vite and React logos to learn more
     //   </p>
     // </>
-    <><div>website</div></>
+       <div style={{ padding: "40px", fontFamily: "Arial" }}>
+      <h1>Camille West</h1>
+      <h2>Software / IT / Engineering Student</h2>
+
+      <p>
+        Welcome to my portfolio. This site is built with React and documents my
+        learning process and projects.
+      </p>
+
+      <h3>Projects</h3>
+      <ul>
+        <li>React Resume Website (this site)</li>
+        <li>Python Learning Repository</li>
+        <li>3D Printing & Engineering Tools</li>
+      </ul>
+
+      <h3>Contact</h3>
+      <p>Email: Camillewest2002@gmail.com</p>
+      <p>GitHub: github.com/ProfessorSocks</p>
+    </div>
   )
 }
 
