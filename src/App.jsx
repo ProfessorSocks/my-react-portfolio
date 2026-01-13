@@ -44,7 +44,7 @@ export default function App() {
 
             <div className="link-row">
               <a href="https://github.com/ProfessorSocks" target="_blank" rel="noreferrer">
-                GitHub
+                Github project page
               </a>
               <span className="dot">•</span>
               <a href="https://www.linkedin.com/in/camille-west-646b49269"
