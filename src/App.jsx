@@ -213,6 +213,7 @@ export default function App() {
               <a href="https://github.com/ProfessorSocks" target="_blank" rel="noreferrer">
                 @ProfessorSocks
               </a>
+              <div>hi shelby</div>
             </p>
           </div>
         </section>
