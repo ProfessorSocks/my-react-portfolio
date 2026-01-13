@@ -47,13 +47,15 @@ export default function App() {
                 GitHub
               </a>
               <span className="dot">•</span>
-              <a href="#" title="Add your LinkedIn URL">
+              <a href="https://www.linkedin.com/in/camille-west-646b49269"
+               title="www.linkedin.com/in/camille-west-646b49269" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <span className="dot">•</span>
-              <a href="#" title="Point this to your resume PDF later">
+              <a href="/my-react-portfolio/resume.pdf" target="_blank" rel="noreferrer">
                 Resume
               </a>
+
             </div>
           </div>
 
@@ -204,7 +206,7 @@ export default function App() {
 
           <div className="contact-card">
             <p>
-              Email: <a href="mailto:youremail@example.com">youremail@example.com</a>
+              Email: <a href="mailto:camillewest2002@gmail.com">camillewest2002@gmail.com</a>
             </p>
             <p>
               GitHub:{" "}
