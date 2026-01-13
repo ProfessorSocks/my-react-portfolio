@@ -48,7 +48,7 @@ export default function App() {
               </a>
               <span className="dot">•</span>
               <a href="https://www.linkedin.com/in/camille-west-646b49269"
-               title="www.linkedin.com/in/camille-west-646b49269" target="_blank" rel="noreferrer">
+               target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <span className="dot">•</span>
