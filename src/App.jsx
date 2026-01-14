@@ -3,6 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import "./App.css";
 import Navbar from "./components/Navbar";
+import { Routes, Route, Link } from "react-router-dom";
+import Admin from "./pages/Admin";
+import CaseLogs from "./pages/CaseLogs";
+
+
 
 function Pill({ children }) {
   return <span className="pill">{children}</span>;
@@ -20,7 +25,7 @@ function Card({ title, children, meta }) {
   );
 }
 
-export default function App() {
+function Home() {
   return (
     <div className="app">
       <Navbar />
@@ -222,10 +227,22 @@ export default function App() {
           <span>© {new Date().getFullYear()} Camille West — built with React + Vite</span>
         </footer>
       </main> 
-      <div>hi shelby</div>
+      <div><p>
+        Go to <Link to="/admin">Admin</Link>
+      </p></div>
     </div>
 
    
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/cases" element={<CaseLogs />} />
+    </Routes>
   );
 }
 

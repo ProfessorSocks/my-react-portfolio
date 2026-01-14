@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <header className="nav">
@@ -9,7 +11,7 @@ export default function Navbar() {
 
         <nav className="nav-links">
           <a href="#skills">Skills</a>
-          <a href="#cases">Case Logs</a>
+          <Link to="/cases">Case Logs</Link>
           <a href="#projects">Projects</a>
           <a href="#docs">Docs</a>
           <a href="#contact">Contact</a>
