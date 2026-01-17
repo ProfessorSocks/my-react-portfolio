@@ -1,5 +1,16 @@
 import { useState, useEffect } from "react";
 
+function exportCases() {
+  const blob = new Blob([JSON.stringify(cases, null, 2)], {
+    type: "application/json",
+  });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "cases.json";
+  link.click();
+}
+
 export default function Admin() {
   const [password, setPassword] = useState("");
   const [isAuthed, setIsAuthed] = useState(
@@ -91,7 +102,8 @@ export default function Admin() {
   return (
     <div style={{ padding: 24, maxWidth: 800 }}>
       <h1>Admin Dashboard</h1>
-      <button onClick={handleLogout}>Log out</button>
+      <button className="admin-button" onClick={handleLogout}>Log out</button>
+      <button className="admin-button" onClick={exportCases}>Export Cases to JSON</button>
 
       <h2>Add New Case Log</h2>
 
@@ -103,7 +115,7 @@ export default function Admin() {
         <textarea name="rootCause" placeholder="Root Cause" value={form.rootCause} onChange={handleChange} />
         <textarea name="fix" placeholder="Fix" value={form.fix} onChange={handleChange} />
         <textarea name="notes" placeholder="Notes" value={form.notes} onChange={handleChange} />
-        <button type="submit">Save Case</button>
+        <button className="admin-button" type="submit">Save Case</button>
       </form>
 
       <h2>Saved Case Logs</h2>
@@ -114,7 +126,7 @@ export default function Admin() {
     <p><b>Fix:</b> {c.fix}</p>
     <p><b>Date:</b> {c.date}</p>
 
-    <button
+    <button className="admin-button"
       onClick={() => {
         const updated = cases.filter((x) => x.id !== c.id);
         setCases(updated);

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 
+
+
+
 export default function CaseLogs() {
   const [cases, setCases] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("case_logs");
-    if (saved) {
-      setCases(JSON.parse(saved));
-    }
-  }, []);
+  fetch(`${import.meta.env.BASE_URL}data/cases.json`)
+    .then((res) => res.json())
+    .then((data) => setCases(data))
+    .catch(() => setCases([]));
+}, []);
 
   return (
     <div style={{ padding: 24, maxWidth: 900 }}>

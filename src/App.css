@@ -362,3 +362,16 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+.admin-button {
+  background-color: #1f2933;   /* dark gray */
+  color: #e6edf3;              /* light text */
+  border: 1px solid #7ee787;   /* terminal green accent */
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.admin-button:hover {
+  background-color: #2a3441;
+}
