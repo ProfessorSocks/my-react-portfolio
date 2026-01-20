@@ -85,10 +85,15 @@ a:hover {
 .nav {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(11, 15, 20, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+
+  background: #0b0f14;
+  border-bottom: 1px solid #1f2933;
+  padding: 14px 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-inner {
@@ -423,4 +428,65 @@ a:hover {
 .admin-button.danger {
   border-color: #ff6b6b;
   color: #ffb3b3;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  background: #0b0f14;
+  border: 1px solid #1f2933;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 0 14px rgba(126, 231, 135, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-head h3 {
+  margin: 0;
+  font-family: monospace;
+  color: #7ee787;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.card-meta {
+  font-size: 11px;
+  color: #9aa4b2;
+  background: rgba(126, 231, 135, 0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-family: monospace;
+}
+
+.card-body {
+  color: #e6edf3;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ---------- Pill ---------- */
+
+.pill {
+  display: inline-block;
+  background: rgba(126, 231, 135, 0.1);
+  border: 1px solid rgba(126, 231, 135, 0.4);
+  color: #7ee787;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: monospace;
+  letter-spacing: 0.2px;
+}
+
+.app {
+  position: relative;
+  z-index: 1;
 }

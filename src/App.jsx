@@ -3,9 +3,11 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import CaseLogs from "./pages/CaseLogs";
+import TerminalBackground from "./components/TerminalBackground";
 import { Routes, Route, Link } from "react-router-dom";
 
 function Pill({ children }) {
@@ -27,7 +29,10 @@ function Card({ title, children, meta }) {
 export default function App() {
   return (
     <>
+      <TerminalBackground />
       <Navbar />
+
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cases" element={<CaseLogs />} />

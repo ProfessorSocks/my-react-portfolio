@@ -1,15 +1,10 @@
+import { Link } from "react-router-dom";
+import "../App.css";
+import Card from "../components/Card";
+import Pill from "../components/Pill";
 export default function Home() {
   return (
     <div className="app">
-      <>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/cases" element={<CaseLogs />} />
-        </Routes>
-      </>
-
       <main className="container">
         {/* HERO */}
         <section className="hero">
