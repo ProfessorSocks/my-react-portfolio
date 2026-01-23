@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import Page from "../components/Page";
 
 export default function CaseLogs() {
   const [cases, setCases] = useState([]);
@@ -26,36 +27,38 @@ export default function CaseLogs() {
   if (loading) return <p style={{ padding: 24 }}>Loading case logs...</p>;
 
   return (
-    <div style={{ padding: 24, maxWidth: 900 }}>
-      <h1>Case Logs</h1>
+    <Page>
+      <div style={{ padding: 24, maxWidth: 900 }}>
+        <h1>Case Logs</h1>
 
-      {cases.length === 0 && <p>No cases logged yet.</p>}
+        {cases.length === 0 && <p>No cases logged yet.</p>}
 
-      <div className="case-grid">
-        {cases.map((c) => (
-          <div key={c.id} className="case-card">
-            <h2>{c.title}</h2>
-            <p>
-              <b>Environment:</b> {c.environment}
-            </p>
-            <p>
-              <b>Issue:</b> {c.issue}
-            </p>
-            <p>
-              <b>Symptoms:</b> {c.symptoms}
-            </p>
-            <p>
-              <b>Root Cause:</b> {c.root_cause}
-            </p>
-            <p>
-              <b>Fix:</b> {c.fix}
-            </p>
-            <p>
-              <b>Notes:</b> {c.notes}
-            </p>
-          </div>
-        ))}
+        <div className="case-grid">
+          {cases.map((c) => (
+            <div key={c.id} className="case-card">
+              <h2>{c.title}</h2>
+              <p>
+                <b>Environment:</b> {c.environment}
+              </p>
+              <p>
+                <b>Issue:</b> {c.issue}
+              </p>
+              <p>
+                <b>Symptoms:</b> {c.symptoms}
+              </p>
+              <p>
+                <b>Root Cause:</b> {c.root_cause}
+              </p>
+              <p>
+                <b>Fix:</b> {c.fix}
+              </p>
+              <p>
+                <b>Notes:</b> {c.notes}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Page>
   );
 }

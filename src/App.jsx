@@ -1,14 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
-import Admin from "./pages/Admin";
 import CaseLogs from "./pages/CaseLogs";
+import Admin from "./pages/Admin";
+import Projects from "./pages/Projects";
+import Docs from "./pages/Docs";
+import Contact from "./pages/Contact";
+import Bottom from "./components/Bottom";
+import ScrollToTop from "./components/ScrollToTop";
 import TerminalBackground from "./components/TerminalBackground";
-import { Routes, Route, Link } from "react-router-dom";
 
 function Pill({ children }) {
   return <span className="pill">{children}</span>;
@@ -31,62 +31,17 @@ export default function App() {
     <>
       <TerminalBackground />
       <Navbar />
-
       <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cases" element={<CaseLogs />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
+      {/* <Bottom /> */}
     </>
   );
 }
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-// <>
-//   <div>
-//     <a href="https://vite.dev" target="_blank">
-//       <img src={viteLogo} className="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://react.dev" target="_blank">
-//       <img src={reactLogo} className="logo react" alt="React logo" />
-//     </a>
-//   </div>
-//   <h1>Vite + React</h1>
-//   <div className="card">
-//     <button onClick={() => setCount((count) => count + 1)}>
-//       count is {count}
-//     </button>
-//     <p>
-//       Edit <code>src/App.jsx</code> and save to test HMR
-//     </p>
-//   </div>
-//   <p className="read-the-docs">
-//     Click on the Vite and React logos to learn more
-//   </p>
-// </>
-//        <div style={{ padding: "40px", fontFamily: "Arial" }}>
-//       <h1>Camille West</h1>
-//       <h2>Software / IT / Engineering Student</h2>
-
-//       <p>
-//         Welcome to my portfolio. This site is built with React and documents my
-//         learning process and projects.
-//       </p>
-
-//       <h3>Projects</h3>
-//       <ul>
-//         <li>React Resume Website (this site)</li>
-//         <li>Python Learning Repository</li>
-//         <li>3D Printing & Engineering Tools</li>
-//       </ul>
-
-//       <h3>Contact</h3>
-//       <p>Email: Camillewest2002@gmail.com</p>
-//       <p>GitHub: github.com/ProfessorSocks</p>
-//     </div>
-//   )
-// }

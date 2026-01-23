@@ -10,11 +10,11 @@ export default function Navbar() {
         </div>
 
         <nav className="nav-links">
-          <a href="#skills">Skills</a>
-          <Link to="/cases">Case Logs</Link>
-          <a href="#projects">Projects</a>
-          <a href="#docs">Docs</a>
-          <a href="#contact">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/cases">Learning Logs</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/admin">Admin</Link>
         </nav>
       </div>
     </header>

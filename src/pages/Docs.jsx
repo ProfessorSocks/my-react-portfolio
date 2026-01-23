@@ -1,0 +1,11 @@
+import Page from "../components/Page";
+
+export default function Docs() {
+  return (
+    <Page>
+      <div style={{ color: "lime", padding: 40, fontSize: 24 }}>
+        Future docs page
+      </div>
+    </Page>
+  );
+}
