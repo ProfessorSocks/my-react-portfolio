@@ -2,6 +2,19 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import Page from "../components/Page";
 
+const TAG_OPTIONS = [
+  "Linux",
+  "Windows",
+  "Git",
+  "Networking",
+  "Hardware",
+  "Deployment",
+  "Security",
+  "PowerShell",
+  "Python",
+  "React",
+];
+
 export default function Admin() {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState("");
@@ -16,7 +29,9 @@ export default function Admin() {
     rootCause: "",
     fix: "",
     notes: "",
+    tags: [],
   });
+
   const [cases, setCases] = useState([]);
 
   async function loadCases() {
@@ -31,11 +46,13 @@ export default function Admin() {
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
+      if (data.session) loadCases(); // ← ADD THIS
     });
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
+        if (session) loadCases(); // ← ADD THIS
       },
     );
 
@@ -86,6 +103,7 @@ export default function Admin() {
         fix: "",
         notes: "",
       });
+      loadCases(); // ← ADD THIS
     }
   }
 
@@ -109,7 +127,9 @@ export default function Admin() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <button type="submit">Log in</button>
+            <button className="admin-button" type="submit">
+              Log in
+            </button>
           </form>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
@@ -128,77 +148,104 @@ export default function Admin() {
 
   return (
     <Page>
-      <div style={{ padding: 24 }}>
-        <h1>Admin Dashboard</h1>
-        <p>Logged in as: {session.user.email}</p>
-        <button className="admin-button" onClick={handleLogout}>
-          Log out
-        </button>
-
-        <hr />
-
-        <h2>Add New Case Log</h2>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Title"
-            value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
-          />
-
-          <input
-            placeholder="Environment"
-            value={form.environment}
-            onChange={(e) => setForm({ ...form, environment: e.target.value })}
-          />
-
-          <textarea
-            placeholder="Issue"
-            value={form.issue}
-            onChange={(e) => setForm({ ...form, issue: e.target.value })}
-          />
-
-          <textarea
-            placeholder="Symptoms"
-            value={form.symptoms}
-            onChange={(e) => setForm({ ...form, symptoms: e.target.value })}
-          />
-
-          <textarea
-            placeholder="Root Cause"
-            value={form.rootCause}
-            onChange={(e) => setForm({ ...form, rootCause: e.target.value })}
-          />
-
-          <textarea
-            placeholder="Fix"
-            value={form.fix}
-            onChange={(e) => setForm({ ...form, fix: e.target.value })}
-          />
-
-          <textarea
-            placeholder="Notes"
-            value={form.notes}
-            onChange={(e) => setForm({ ...form, notes: e.target.value })}
-          />
-
-          <button className="admin-button" type="submit">
-            Save Case
-          </button>
-        </form>
-        <h2>Existing Case Logs</h2>
-
-        {cases.map((c) => (
-          <div key={c.id} className="case-admin-card">
-            <strong>{c.title}</strong>
-            <button
-              className="admin-button danger"
-              onClick={() => deleteCase(c.id)}
-            >
-              Delete
+      <div className="admin-wrap">
+        <div className="admin-header">
+          <h1>Admin Dashboard</h1>
+          <div className="admin-user">
+            <span>Logged in as: {session.user.email}</span>
+            <button className="admin-button" onClick={handleLogout}>
+              Log out
             </button>
           </div>
-        ))}
+        </div>
+
+        <div className="admin-panel">
+          <h2>Add New Case Log</h2>
+
+          <form className="admin-form" onSubmit={handleSubmit}>
+            <div className="admin-field">
+              <label>Title</label>
+              <input
+                value={form.title}
+                onChange={(e) => setForm({ ...form, title: e.target.value })}
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Environment</label>
+              <input
+                value={form.environment}
+                onChange={(e) =>
+                  setForm({ ...form, environment: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Issue</label>
+              <textarea
+                value={form.issue}
+                onChange={(e) => setForm({ ...form, issue: e.target.value })}
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Symptoms</label>
+              <textarea
+                value={form.symptoms}
+                onChange={(e) => setForm({ ...form, symptoms: e.target.value })}
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Root Cause</label>
+              <textarea
+                value={form.rootCause}
+                onChange={(e) =>
+                  setForm({ ...form, rootCause: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Fix</label>
+              <textarea
+                value={form.fix}
+                onChange={(e) => setForm({ ...form, fix: e.target.value })}
+              />
+            </div>
+
+            <div className="admin-field">
+              <label>Notes</label>
+              <textarea
+                value={form.notes}
+                onChange={(e) => setForm({ ...form, notes: e.target.value })}
+              />
+            </div>
+
+            <button className="admin-button" type="submit">
+              Save Case Log
+            </button>
+          </form>
+        </div>
+
+        <div className="admin-panel">
+          <h2>Existing Case Logs</h2>
+
+          <div className="admin-case-list">
+            {cases.map((c) => (
+              <div key={c.id} className="case-admin-card">
+                <div className="case-admin-title">{c.title}</div>
+                <button
+                  className="admin-button danger"
+                  onClick={() => deleteCase(c.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Page>
   );
