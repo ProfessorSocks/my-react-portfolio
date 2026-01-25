@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import CaseLogs from "./pages/CaseLogs";
 import Admin from "./pages/Admin";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import Docs from "./pages/Docs";
 import Contact from "./pages/Contact";
 import Bottom from "./components/Bottom";
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cases" element={<CaseLogs />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/docs" element={<Docs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />

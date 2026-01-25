@@ -55,6 +55,15 @@ export default function CaseLogs() {
               <p>
                 <b>Notes:</b> {c.notes}
               </p>
+              {c.tags && c.tags.length > 0 && (
+                <div className="case-tags">
+                  {c.tags.map((tag) => (
+                    <span key={tag} className="tag-pill active">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
