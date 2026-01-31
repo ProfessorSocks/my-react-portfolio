@@ -30,6 +30,22 @@ export default function ProjectDetail() {
     })();
   }, [slug]);
 
+  async function loadUpdates(projectId) {
+    const { data } = await supabase
+      .from("project_updates")
+      .select("*")
+      .eq("project_id", projectId)
+      .order("created_at", { ascending: false });
+
+    setUpdates(data || []);
+  }
+
+  useEffect(() => {
+    if (project?.id) {
+      loadUpdates(project.id);
+    }
+  }, [project]);
+
   if (!project)
     return (
       <Page>
@@ -113,27 +129,44 @@ export default function ProjectDetail() {
           </a>
         )}
       </div>
-
       <div style={{ marginTop: 26 }}>
         <h2>Updates</h2>
         <p className="muted">
           Progress log entries (mini case logs) for this project.
         </p>
 
-        <div className="terminal-list" style={{ marginTop: 10 }}>
+        <div
+          style={{
+            marginTop: 14,
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
           {updates.map((u) => (
-            <div
-              key={u.id}
-              className="terminal-row"
-              style={{ cursor: "default" }}
-            >
-              <span className="terminal-bullet">+</span>
-              <span className="terminal-title">{u.title}</span>
-              <span className="terminal-meta">
-                {new Date(u.created_at).toLocaleDateString()}
-              </span>
+            <div key={u.id} className="update-entry">
+              <div className="update-header">
+                <span className="terminal-bullet">+</span>
+                <span className="update-title">{u.title}</span>
+                <span className="update-meta">
+                  {new Date(u.created_at).toLocaleDateString()}
+                </span>
+              </div>
+
+              <pre className="update-body">{u.body}</pre>
+
+              {u.tags?.length > 0 && (
+                <div className="update-tags">
+                  {u.tags.map((tag) => (
+                    <span key={tag} className="tag-pill active">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
+
           {updates.length === 0 && (
             <div className="muted" style={{ padding: 12 }}>
               No updates yet.

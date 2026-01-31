@@ -779,3 +779,86 @@ body {
   font-family: monospace;
   font-size: 12px;
 }
+.project-admin-card {
+  background: rgba(11, 15, 20, 0.9);
+  border: 1px solid #1f2933;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.project-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-admin-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-admin-title {
+  font-family: monospace;
+  font-size: 16px;
+  color: #7ee787;
+}
+
+.project-admin-status {
+  font-size: 12px;
+  color: #9aa4b2;
+  margin-top: 4px;
+}
+
+.project-admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.project-admin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.update-entry {
+  background: rgba(5, 10, 8, 0.9);
+  border: 1px solid #1f2933;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: monospace;
+}
+
+.update-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7ee787;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.update-title {
+  font-weight: 600;
+}
+
+.update-meta {
+  margin-left: auto;
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+.update-body {
+  white-space: pre-wrap;
+  font-size: 13px;
+  color: #c9d1d9;
+  margin: 0;
+}
+
+.update-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}

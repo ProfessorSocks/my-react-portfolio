@@ -162,6 +162,11 @@ export default function Admin() {
             </button>
           </div>
         </div>
+        <div style={{ marginBottom: 16 }}>
+          <a className="admin-button" href="#/admin/projects">
+            Manage Projects
+          </a>
+        </div>
 
         <div className="admin-panel">
           <h2>Add New Case Log</h2>

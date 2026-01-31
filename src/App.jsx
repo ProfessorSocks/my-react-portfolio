@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import CaseLogs from "./pages/CaseLogs";
 import Admin from "./pages/Admin";
+import AdminProjects from "./pages/AdminProjects";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Docs from "./pages/Docs";
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/docs" element={<Docs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/projects" element={<AdminProjects />} />
       </Routes>
       {/* <Bottom /> */}
     </>
