@@ -9,6 +9,8 @@ const STACK_OPTIONS = [
   "Networking",
   "Hardware",
   "React",
+  "Python",
+  "Javascript",
 ];
 
 export default function AdminProjects() {
